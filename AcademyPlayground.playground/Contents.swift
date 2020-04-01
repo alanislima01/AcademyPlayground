@@ -4,18 +4,42 @@ import UIKit
 import PlaygroundSupport
 
 class MyViewController : UIViewController {
-    override func loadView() {
-        let view = UIView()
-        view.backgroundColor = .white
+    
+    //Botao aq p conseguir td codigo ver
+    let botaoVamosLa = UIButton()
+  
+    @IBAction func botaoTocado() {
+        print("Vamos lá!")
+    }
 
-        let label = UILabel()
-        label.frame = CGRect(x: 150, y: 200, width: 200, height: 20)
-        label.text = "Hello World!"
-        label.textColor = .black
+    override func loadView() {
         
-        view.addSubview(label)
+        let view = UIView()
+        view.backgroundColor = .systemBlue
+        
+        let labelBoasVindas = UILabel()
+        labelBoasVindas.frame = CGRect(x: 661, y: 223, width: 761, height: 226)
+        labelBoasVindas.text = "Olá, seja bem-vindo; eu sou o Boop! Vou levar você para várias aventuras!"
+        labelBoasVindas.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        view.addSubview(labelBoasVindas)
+
+        botaoVamosLa.frame = CGRect(x: 973, y: 504, width: 278, height: 93)
+        botaoVamosLa.setTitle("Vamos lá!", for: .normal)
+        botaoVamosLa.setTitleColor(.black, for: .normal)
+        view.addSubview(botaoVamosLa)
+        
         self.view = view
+
+    }
+      
+    override func viewDidLoad() {
+
+        botaoVamosLa.addTarget(self, action: #selector(MyViewController.botaoTocado), for: .touchUpInside)
     }
 }
+   
 // Present the view controller in the Live View window
-PlaygroundPage.current.liveView = MyViewController()
+    let viewController = MyViewController()
+    let vc = MyViewController(screenType: .mac , isPortrait: true)
+    PlaygroundPage.current.liveView = vc.scale(to: 0.4)
+
