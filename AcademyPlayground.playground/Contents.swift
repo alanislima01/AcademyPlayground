@@ -10,7 +10,10 @@ class MyViewController : UIViewController {
     let fala1Boop = UILabel()
   
     @IBAction func botaoTocado() {
-        print("Vamos lá!")
+        print("Apertou o botao -> Vamos lá!")
+        let novaViewController = OnboardingChina()
+        show(novaViewController, sender: nil)
+        //o ? diz que vai procurar no sistema a navigationController para fazer a acao
     }
     
 
@@ -66,11 +69,40 @@ class MyViewController : UIViewController {
     override func viewDidLoad() {
 
         botaoVamosLa.addTarget(self, action: #selector(MyViewController.botaoTocado), for: .touchUpInside)
+        
+        //target eh acao do botao. self diz q eh dentro do view controller.
     }
 }
    
+
+class OnboardingChina: UIViewController {
+//a classe eh a nova tela,é uma nova viewcontroller
+   override func loadView(){
+        
+    
+        let viewChina = UIView()
+        self.view = viewChina
+
+        let backgroundChina = UIImageView()
+        backgroundChina.image = UIImage(named: "ONBOARDINGbackgroudChina")
+        backgroundChina.frame = CGRect(x: 0, y: 0, width: 1440, height: 900)
+
+        let explicacaoChina = UIImageView()
+        explicacaoChina.image = UIImage (named: "onboardingChinaTexto")
+        explicacaoChina.frame = CGRect(x: 273, y: 338, width: 931, height: 162)
+
+        view.addSubview(backgroundChina);
+        view.addSubview(explicacaoChina)
+
+
+    }
+}
+
+
 // Present the view controller in the Live View window
-    let viewController = MyViewController()
-    let vc = MyViewController(screenType: .mac , isPortrait: true)
-    PlaygroundPage.current.liveView = vc.scale(to: 0.4)
+
+let viewController = MyViewController()
+let navigation = UINavigationController(screenType: .mac , isPortrait: true)
+navigation.pushViewController(viewController, animated: false)
+PlaygroundPage.current.liveView = navigation.scale(to: 0.4)
 
