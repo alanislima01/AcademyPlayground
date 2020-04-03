@@ -28,15 +28,6 @@ class MyViewController : UIViewController {
         fala1Boop.image = UIImage (named: "fala1Boop")
         fala1Boop.frame = CGRect(x: 601, y: 134, width: 786, height: 309)
 
-                //background.image = #imageLiteral(resourceName: "chaoBoop.png")
-                
-                
-
-        //        let labelBoasVindas = UILabel()
-        //        labelBoasVindas.frame = CGRect(x: 661, y: 223, width: 761, height: 226)
-        //        labelBoasVindas.text = "Olá, seja bem-vindo; eu sou o Boop! Vou levar você para várias aventuras!"
-        //        labelBoasVindas.textColor = #colorLiteral(red: 0.6042942405, green: 0.604398489, blue: 0.6042804718, alpha: 1) --> para colocar uma label seria assim
-
         let vamosLa = UIImage (named: "vamosLa")
         botaoVamosLa.frame = CGRect(x: 973, y: 504, width: 278, height: 93)
         botaoVamosLa.setTitle("", for: .normal)
@@ -77,7 +68,18 @@ class MyViewController : UIViewController {
 
 class OnboardingChina: UIViewController {
 //a classe eh a nova tela,é uma nova viewcontroller
-   override func loadView(){
+    
+    let superBotao = UIButton()
+    
+    @IBAction func tocarSuperBotao(){
+        print("Tocou em alguma parte da tela")
+        let novaViewController = telaChina1()
+        show(novaViewController, sender: nil)
+        
+    }
+    
+    
+    override func loadView(){
         
     
         let viewChina = UIView()
@@ -90,13 +92,47 @@ class OnboardingChina: UIViewController {
         let explicacaoChina = UIImageView()
         explicacaoChina.image = UIImage (named: "onboardingChinaTexto")
         explicacaoChina.frame = CGRect(x: 273, y: 338, width: 931, height: 162)
+    
+        let superBotao = UIImageView()
+        superBotao.image = UIImage (named: "transparente")
+        superBotao.frame = CGRect(x: 0, y: 0, width: 1440, height: 900)
 
         view.addSubview(backgroundChina);
-        view.addSubview(explicacaoChina)
+        view.addSubview(explicacaoChina);
+        view.addSubview(superBotao)
+        
+        self.view = view
+        
+    }
+
+    override func viewDidLoad() {
+
+        superBotao.addTarget(self, action: #selector(OnboardingChina.tocarSuperBotao), for: .touchUpInside)
+        //target eh acao do botao. self diz q eh dentro do view controller.
+    }
+
+}
 
 
+class telaChina1: UIViewController {
+//a classe eh a nova tela,é uma nova viewcontroller
+   override func loadView(){
+
+
+        let viewChina1 = UIView()
+        self.view = viewChina1
+
+        let backgroundChina = UIImageView()
+        backgroundChina.image = UIImage(named: "ONBOARDINGbackgroudChina")
+        backgroundChina.frame = CGRect(x: 0, y: 0, width: 1440, height: 900)
+
+        view.addSubview(backgroundChina);
+
+    
     }
 }
+
+
 
 
 // Present the view controller in the Live View window
