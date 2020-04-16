@@ -103,7 +103,7 @@ public class Templo: UIViewController {
         view.addSubview(frameView)
         frameView.isUserInteractionEnabled = true
         let panFrame = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-        frameView.addGestureRecognizer(panFrame)
+        presenteView.addGestureRecognizer(panFrame)
         
         self.view = view
         
