@@ -19,6 +19,7 @@ public class buscandoTemplo: UIViewController {
         
         print("apertou imagem errada")
         self.msgDeErro.isHidden = false
+        self.msgDoMonge.isHidden = true
         //Queria saber se depois de um tempo poderia sumir tipo 4s
     }
     
@@ -27,6 +28,7 @@ public class buscandoTemplo: UIViewController {
         
         print("Achou o monge")
         self.msgDoMonge.isHidden = false
+        self.msgDeErro.isHidden = true 
         
         //seria legal uma animação tipo brilhando
         //Queria saber se depois de um tempo poderia sumir tipo 4s
@@ -35,7 +37,7 @@ public class buscandoTemplo: UIViewController {
     @objc func tocarCasinha(sender: UIButton){
         
         //queria colocar sons de uhu nessa hora
-        print("Achou o monge")
+        print("Achou a casinha")
         self.msgDeErro.isHidden = true
         
         let novaViewController = Templo(screenType: .mac , isPortrait: true)
@@ -53,8 +55,8 @@ public class buscandoTemplo: UIViewController {
         boopCalado.image = UIImage(named: "boopCalado")
         boopCalado.frame = CGRect(x: 400, y: 634, width: 210, height: 221)
         
-        msgDeErro.image = UIImage(named: "msgDeErro")
-        msgDeErro.frame = CGRect(x: 649, y: 679, width: 339, height: 125)
+        msgDeErro.image = UIImage(named: "encontreTemplo")
+        msgDeErro.frame = CGRect(x: 779, y: 719, width: 271, height: 85)
         msgDeErro.isHidden = true
         
         msgDoMonge.image = UIImage(named: "msgDoMonge")
@@ -64,7 +66,7 @@ public class buscandoTemplo: UIViewController {
         macaco.setBackgroundImage(UIImage(named: "macaco"), for: .normal)
         macaco.frame = CGRect(x: 620, y: 419, width: 73, height: 90)
         
-        casinhaChina.setBackgroundImage(UIImage(named: "casinhaChina"), for: .normal)
+        casinhaChina.setBackgroundImage(UIImage(named: "casinhachina"), for: .normal)
         casinhaChina.frame = CGRect(x: 922, y: 598, width: 80, height: 81)
         
         rato.setBackgroundImage(UIImage(named: "rato"), for: .normal)
@@ -79,13 +81,14 @@ public class buscandoTemplo: UIViewController {
         
         viewBusca.addSubview(backgroundChina)
         viewBusca.addSubview(macaco)
-        viewBusca.addSubview(casinhaChina)
         viewBusca.addSubview(rato)
         viewBusca.addSubview(pedra)
         viewBusca.addSubview(boopCalado)
         viewBusca.addSubview(msgDeErro)
         viewBusca.addSubview(msgDoMonge)
         viewBusca.addSubview(monge)
+        viewBusca.addSubview(casinhaChina)
+
         
         
         macaco.addTarget(self, action: #selector(buscandoTemplo.tocarErrado), for: .touchUpInside)

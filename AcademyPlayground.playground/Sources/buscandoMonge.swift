@@ -18,7 +18,9 @@ public class buscandoMonge: UIViewController {
     @objc func tocarErrado(sender: UIButton){
         
         print("apertou imagem errada")
+        self.encontre.isHidden = true
         self.msgDeErro.isHidden = false
+        
         //Queria saber se depois de um tempo poderia sumir tipo 4s
     }
     
@@ -27,6 +29,7 @@ public class buscandoMonge: UIViewController {
         
         print("Achou o monge")
         self.msgDeErro.isHidden = true
+        self.encontre.isHidden = true
         //queria colocar sons de uhu nessa hora
         let novaViewController = FalandoComMonge(screenType: .mac , isPortrait: true)
         navigationController?.pushViewController(novaViewController, animated: true)
@@ -64,7 +67,7 @@ public class buscandoMonge: UIViewController {
         pedra.frame = CGRect(x: 1140, y: 795, width: 120, height: 45)
         
         encontre.image = UIImage (named: "encontreMonge")
-        encontre.frame = CGRect(x: 637, y: 251, width: 659, height: 305)
+        encontre.frame = CGRect(x: 628, y: 683, width: 526, height: 84)
         
         monge.setBackgroundImage(UIImage(named: "monge"), for: .normal)
         monge.frame = CGRect(x: 1400, y: 548, width: 45, height: 55)
@@ -75,6 +78,7 @@ public class buscandoMonge: UIViewController {
       //  ll.frame = CGRect(x: 1400, y: 548, width: 45, height: 55)
         
         viewBusca.addSubview(backgroundChina)
+        viewBusca.addSubview(encontre)
         viewBusca.addSubview(macaco)
         viewBusca.addSubview(casinhaChina)
         viewBusca.addSubview(rato)
@@ -82,7 +86,6 @@ public class buscandoMonge: UIViewController {
         viewBusca.addSubview(boopCalado)
         viewBusca.addSubview(msgDeErro)
         viewBusca.addSubview(monge)
-        viewBusca.addSubview(encontre)
         
         
         macaco.addTarget(self, action: #selector(buscandoMonge.tocarErrado), for: .touchUpInside)
