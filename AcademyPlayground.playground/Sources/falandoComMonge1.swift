@@ -30,7 +30,7 @@ public class FalandoComMonge: UIViewController{
     
     var acoesBoop: [AcaoBoop] = [AcaoBoop(titulo:"Cumprimentar", falaBoop: "Olá, sou Boop. Está tudo bem? Vi você aqui em cima dessa montanha sozinho e queria sabe se está tudo bem..." ,falaMonge:  "Olá Boop! Está tudo bem sim, estou sozinho porque eu estava meditando. Aqui é um lugar bem tranquilo, pois isso gosto de ficar aqui..."),
                                  AcaoBoop(titulo:"Perguntar o porque ele é careca",falaBoop:  "Não queria ser chato, mas fiquei curioso de saber por que o senhor não tem cabelo!" ,falaMonge:  "Antigamente, apenas a realeza poderia ter cabelos cumpridos. Então Sidarta(o Buda), ficou assim como eu para nos lembrar da simplicidade!"),
-                                 AcaoBoop(titulo: "Quem é Sidarta?", falaBoop: "Gostaria muito de saber mais sobre Sidarta, senhor monge!  Já ouvi falar dele com meu amigo Pandão, aqui da China!" , falaMonge: "Sidarta era um principe que preferiu deixar sua vida no castelo para viver de forma simples; doi ele que fundou o budismo!"),
+                                 AcaoBoop(titulo: "Quem é Sidarta?", falaBoop: "Gostaria muito de saber mais sobre Sidarta, senhor monge!  Já ouvi falar dele com meu amigo Pandão, aqui da China!" , falaMonge: "Sidarta era um principe que preferiu deixar sua vida no castelo para viver de forma simples; foi ele que fundou o budismo!"),
                                  AcaoBoop(titulo: "Onde posso ir?", falaBoop: "Você sabe um próximo lugar que posso explorar? Estou procurando um presente!" , falaMonge: "Sim! Você pode conhecer melhor o templo budista aqui perto. É parecida com uma casa grande e vermelha!")]
     
     
