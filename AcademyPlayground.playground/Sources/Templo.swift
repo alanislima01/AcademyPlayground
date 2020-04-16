@@ -14,6 +14,7 @@ public class Templo: UIViewController {
     let quadro = UIImageView()
     let botaoHome = UIButton()
     let msgArraste = UIImageView()
+    let msgQuadro = UIImageView()
     
     private var chompPlayer: AVAudioPlayer?
     
@@ -27,14 +28,40 @@ public class Templo: UIViewController {
         show(novaViewController, sender: nil)
     }
     
-    //fazer funcao de clicar no presente1 e ele ir crescendo tipo animação
-    //fazwe a funcao do presente2 para
+    
+    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
+        
+        // 1
+        let translation = gesture.translation(in: view)
+        
+        // 2
+        guard let gestureView = gesture.view else {
+            return
+        }
+        
+        gestureView.center = CGPoint(
+            x: gestureView.center.x + translation.x,
+            y: gestureView.center.y + translation.y
+        )
+        // 3
+        gesture.setTranslation(.zero, in: view)
+        
+    let frame2 = CGRect(x: 435, y: 728, width: 165, height: 135)
+        if gesture.state == .ended{
+            if frame2.contains(gestureView.frame){
+            self.confete.isHidden = false
+                self.quadro.isHidden = false
+                self.msgArraste.isHidden = true
+                self.msgQuadro.isHidden = false
+            }else{
+            gestureView.center = .init(x: 1308, y: 728)
+            }
+    }
+}
+    
+    
     
     override public func loadView(){
-        
-        
-        
-        
         
         let viewTemplo = UIView()
         self.view = viewTemplo
@@ -43,23 +70,22 @@ public class Templo: UIViewController {
         backgroundTemplo.frame = CGRect(x: 0, y: 0, width: 1440, height: 900)
         
         confete.image = UIImage(named: "confetee")
-        confete.frame = CGRect(x: 29422, y: 141, width: 1440, height: 900)
+        confete.frame = CGRect(x: -87, y: -171, width: 1600, height: 1177)
+        self.confete.isHidden = true
         
         boop.image = UIImage(named: "boop")
         boop.frame = CGRect(x: 386, y: 620, width: 210, height: 221)
-        //
-        //        presente1.setBackgroundImage(UIImage(named: "presente"), for: .normal)
-        //        presente1.frame = CGRect(x: 1308, y: 728, width: 83, height: 83)
-        //        self.presente1.isHidden = false
-        //
-        
-        
+
         msgArraste.image = UIImage(named: "arrastePresente")
         msgArraste.frame = CGRect(x: 758, y: 728, width: 294, height: 94)
         self.msgArraste.isHidden = false
         
+        msgQuadro.image = UIImage(named: "msgQuadro")
+        msgQuadro.frame = CGRect(x: 589, y: 157, width: 340, height: 176)
+        self.msgQuadro.isHidden = true
+        
         quadro.image = UIImage(named: "quadro")
-        quadro.frame = CGRect(x: 553, y: 123, width: 421, height: 504)
+        quadro.frame = CGRect(x: 658, y: 434, width: 195, height: 233)
         self.quadro.isHidden = true
         
         botaoHome.setBackgroundImage(UIImage(named: "voltarChina"), for: .normal)
@@ -72,6 +98,9 @@ public class Templo: UIViewController {
         // viewTemplo.addSubview(presente1)
         viewTemplo.addSubview(quadro)
         viewTemplo.addSubview(botaoHome)
+        viewTemplo.addSubview(msgArraste)
+        viewTemplo.addSubview(msgQuadro)
+        
         
         botaoHome.addTarget(self, action: #selector(OnboardingChina.tocarBotaoHome), for: .touchUpInside)
         
@@ -93,10 +122,10 @@ public class Templo: UIViewController {
         self.view = view
         
         //: E agora precisamos implementar a funções de toque:
-//        func handleTap(_ gesture: UIGestureRecognizer) {
-//            print("Presente foi tocado!")
-//        }
-//
+        //        func handleTap(_ gesture: UIGestureRecognizer) {
+        //            print("Presente foi tocado!")
+        //        }
+        //
         let frame = UIImage(named: "transparente")
         let frameView = UIImageView(image: frame)
         frameView.frame = CGRect(x: 435, y: 728, width: 160, height: 129)
@@ -144,46 +173,10 @@ public class Templo: UIViewController {
         return player
     }
     
-    //: E implementar o restante que havia no nosso arquivo:
-//    @objc func handleTap(_ gesture: UIGestureRecognizer) {
-//        print("Macaco foi tocado!")
-//    }
-//
-//    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
-//        let translation = gesture.translation(in: view)
-//        guard let gestureView = gesture.view else {
-//            return
-//        }
-//
-//        gestureView.center = CGPoint(
-//            x: gestureView.center.x + translation.x,
-//            y: gestureView.center.y + translation.y
-//        )
-//
-//        gesture.setTranslation(.zero, in: view)
-//    }
-    
     @objc func handleTap(_ gesture: UIGestureRecognizer) {
         print("Presente foi tocado!")
     }
     
-    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
-        
-        print("handlePan")
-        // 1
-        let translation = gesture.translation(in: view)
-        
-        // 2
-        guard let gestureView = gesture.view else {
-            return
-        }
-        
-        gestureView.center = CGPoint(
-            x: gestureView.center.x + translation.x,
-            y: gestureView.center.y + translation.y
-        )
-        // 3
-        gesture.setTranslation(.zero, in: view)
-    }
-    
+
 }
+
