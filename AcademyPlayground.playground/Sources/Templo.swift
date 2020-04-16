@@ -11,7 +11,7 @@ public class Templo: UIViewController {
     let boop = UIImageView()
     //let presente1 = UIButton() //para fazer a interacao colocar como imagem ???
     let confete = UIImageView()
-    let quadro = UIImageView()
+    let quadro = UIButton()
     let botaoHome = UIButton()
     let msgArraste = UIImageView()
     let msgQuadro = UIImageView()
@@ -28,6 +28,11 @@ public class Templo: UIViewController {
         show(novaViewController, sender: nil)
     }
     
+    @objc func tocarQuadro() {
+        print("foi para a casa nova")
+        let novaViewController = Despedida()
+        show(novaViewController, sender: nil)
+    }
     
     @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
         
@@ -84,7 +89,8 @@ public class Templo: UIViewController {
         msgQuadro.frame = CGRect(x: 589, y: 157, width: 340, height: 176)
         self.msgQuadro.isHidden = true
         
-        quadro.image = UIImage(named: "quadro")
+        
+        quadro.setBackgroundImage(UIImage(named: "quadro"), for: .normal)
         quadro.frame = CGRect(x: 658, y: 434, width: 195, height: 233)
         self.quadro.isHidden = true
         
@@ -101,6 +107,8 @@ public class Templo: UIViewController {
         viewTemplo.addSubview(msgArraste)
         viewTemplo.addSubview(msgQuadro)
         
+        
+        quadro.addTarget(self, action: #selector(Templo.tocarQuadro), for: .touchUpInside)
         
         botaoHome.addTarget(self, action: #selector(OnboardingChina.tocarBotaoHome), for: .touchUpInside)
         
